@@ -1,0 +1,9 @@
+title: Member Directory
+description: A GitHub Pages-powered member directory
+baseurl: ""
+url: ""
+theme: jekyll-theme-cayman
+
+collections:
+  members:
+    output: true

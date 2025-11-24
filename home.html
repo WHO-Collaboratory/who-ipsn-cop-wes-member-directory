@@ -1,0 +1,186 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Member Directory</title>
+  <link rel="stylesheet" href="style.css?v=5">
+</head>
+
+<body>
+
+  <!-- Banner -->
+  <div class="banner">
+    <img src="images/ipsn_logo_light_small.jpg" alt="Banner" id="bannerImg"/>
+      
+  </div>
+
+  <!-- Protected content wrapper -->
+  <div id="content" style="display:none;"></div>
+
+<header> 
+
+  <div class="header-container">
+    <div class="header-top">
+      <h2>IPSN Community of Practice on Wastewater and Environmental Surveillance</h2>
+   </div>
+
+    <div class="search-container">
+      <div class="searchInput-wrapper">
+        <img src="images/icons8-search-24.png" alt="">
+        <input type="text" id="searchBar" placeholder="Search members by Name, Country, Pathogen, Setting..." aria-label="Search members by Name, Country, Pathogen, Setting">
+        <img src="images/icons8-cancel.svg" alt="" id="searchClearIcon">
+      </div> 
+      <button id="searchBtn">Search</button>
+    </div> 
+
+    <!-- <div class="header-bottom-line" aria-hidden="true"></div> -->
+    
+  </div>
+   <!-- 💡 Suggestions dropdown (added to fix the error) -->
+    <!-- <ul id="suggestions" class="suggestions-list"></ul> -->
+ </header>
+
+
+<!-- Two column layout -->
+  <div class="main-container">
+
+      <!-- Filters (left) -->
+    <aside class="filters">
+    
+    <div class="filter-header"> 
+      <h3 class="filters-title">Filter by</h3> <span class="reset" onclick="resetFilters()">Reset All</span>
+     </div>
+
+       <!-- Sort -->
+    <div class="filter-group" id="sortFilterGroup">
+      <h4>Sort</h4>
+        <select id="sortBy">
+          <option value="name">Sort by Name</option>
+          <option value="region">Sort by Country</option>
+         </select>
+    </div>
+
+       <!-- Country filter group -->
+    <div class="filter-group" id="regionFilterGroup">
+      <h4>All Regions <span class="clear" onclick="clearFilter('region')">Clear</span></h4>
+        <label><input type="checkbox" class="filter region" value="Africa"> Africa</label>
+        <label><input type="checkbox" class="filter region" value="East Asia"> East Asia</label>
+        <label><input type="checkbox" class="filter region" value="Europe"> Europe</label>
+        <label><input type="checkbox" class="filter region" value="South American"> South America</label>
+        <label><input type="checkbox" class="filter region" value="North American"> North America</label>
+        <label><input type="checkbox" class="filter region" value="Oceania"> Oceania</label>
+        <label><input type="checkbox" class="filter region" value="Central American"> Central America</label>
+
+    </div>
+
+  <!-- Pathogen filter group -->
+    <div class="filter-group" id="pathogenFilterGroup">
+     <h4>All Pathogens <span class="clear" onclick="clearFilter('pathogen')">Clear</span></h4>
+        <label><input type="checkbox" class="filter pathogen" value="Viral"> Viral</label>
+        <label><input type="checkbox" class="filter pathogen" value="Bacterial"> Bacterial</label>
+        <label><input type="checkbox" class="filter pathogen" value="Parastic"> Parastic</label>
+        <label><input type="checkbox" class="filter pathogen" value="Chemical"> Chemical</label>
+       
+    </div>
+
+  <!-- Setting filter group -->
+    <div class="filter-group" id="settingFilterGroup">
+       <h4>All Settings <span class="clear" onclick="clearFilter('setting')">Clear</span></h4>
+        <label><input type="checkbox" class="filter setting" value="Rural"> Rural</label>
+        <label><input type="checkbox" class="filter setting" value="Urban"> Urban</label>
+        <label><input type="checkbox" class="filter setting" value="Sewered"> Sewered</label>
+        <label><input type="checkbox" class="filter setting" value="Institutional"> Institutional</label>
+        <label><input type="checkbox" class="filter setting" value="Unsewered"> Unsewered</label>
+      
+    </div>
+
+
+ </aside>
+
+      <!-- Members (right) -->
+  <section class="members">
+   <main id="memberList" class="member-grid"></main>
+
+  </section>
+</div>
+
+
+<footer>
+      <p>Promoting visibility, connection, and knowledge exchange</p>
+      <p>© 2025 COP-WES Member Directory | Built with ❤️ by WHO IPSN COP Wastewater & Environmental Surveillance</p>
+    </footer>
+
+
+    <!-- <script>
+
+    // redirect menu
+
+    function goHome(select) {
+      if (select.value === "home") {
+        window.location.href = "index.html"; 
+      }
+    }
+
+    // check if user is logged in
+    if (localStorage.getItem("authenticated") === "true") {
+    document.getElementById("content").style.display = "block";
+      } else {
+   window.location.href = "index.html";
+    }
+    
+</script>
+
+  </script>
+
+  <script src="script.js"></script>
+
+
+  <script>
+    const version = new Date().getTime();
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = `style.css?v=${version}`;
+    document.head.appendChild(css);
+
+    const script = document.createElement('script');
+    script.src = `script.js?v=${version}`;
+    document.head.appendChild(script);
+  </script>
+
+
+     -->
+
+     <script>
+  // Redirect menu
+  function goHome(select) {
+    if (select.value === "home") {
+      window.location.href = "index.html"; 
+    }
+  }
+
+  // Check if user is logged in
+  if (localStorage.getItem("authenticated") === "true") {
+    document.getElementById("content").style.display = "block";
+  } else {
+    window.location.href = "index.html";
+  }
+
+  // Dynamically load script.js and style.css with cache-busting version
+  const version = new Date().getTime();
+
+  const css = document.createElement('link');
+  css.rel = 'stylesheet';
+  css.href = `style.css?v=${version}`;
+  document.head.appendChild(css);
+
+  const script = document.createElement('script');
+  script.src = `script.js?v=${version}`;
+  document.body.appendChild(script);  // ✅ load at the end, not in <head>
+</script>
+
+
+  </div>
+  
+</body>
+</html>

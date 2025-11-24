@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>COP WES Member Directory</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body class="login-page">
+
+  <!-- Animated Welcome Message -->
+  <!-- <div id="welcome-message">Welcome</div> -->
+
+  <div class="card">
+    <h4>🔒 Enter WHO IPSN COP WES Member Directory Passcode</h4>
+    <input type="password" id="password" placeholder="Enter Password">
+    <button onclick="checkPassword()">Login</button>
+    <p id="error"></p>
+  </div>
+
+  <!-- <script src="script.js"></script> -->
+
+  <script>
+function checkPassword() {
+  const password = document.getElementById("password").value;
+  const error = document.getElementById("error");
+  const correctPassword = "copwes1"; // ✅ your passcode here
+
+  if (password === correctPassword) {
+    // Mark as logged in
+    localStorage.setItem("authenticated", "true");
+
+    // Redirect to home page
+    window.location.href = "home.html";
+  } else {
+    error.textContent = "❌ Incorrect passcode. Try again.";
+    error.style.color = "red";
+  }
+}
+</script>
+
+
+
+</body>
+</html>
