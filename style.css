@@ -411,9 +411,11 @@ footer a:hover {
 .main-container {
   display: flex;
   gap: 20px;
-  align-items: flex-start;
+  width: 100%;
+  overflow: hidden;
+  /* align-items: flex-start;
   justify-content: flex-start;
-  margin-top: 5px;
+  margin-top: 5px; */
 }
 
 /* Left filters */
@@ -423,8 +425,8 @@ footer a:hover {
   padding: 15px;
   border-radius: 8px;
   flex-shrink: 0; 
-  max-height: 600px; 
-  min-height: 500px;  
+  max-height: 550px; 
+  min-height: 450px;  
   overflow-y: auto; 
 }
 
@@ -501,5 +503,5 @@ footer a:hover {
 .member-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 16px;
 }
