@@ -1,6 +1,5 @@
 let members = [];
 
-// ---- DOM ----
 const searchBar = document.getElementById("searchBar");
 const suggestions = document.getElementById("suggestions");
 const memberList = document.getElementById("memberList");
@@ -10,30 +9,6 @@ const clearSearchBtn = document.getElementById("searchClearIcon");
 
 // ---- Normalize JSON keys ----
 function normalizeMember(raw) {
-  // return {
-  //   name: raw.name || "",
-  //   pronouns: raw.pronouns || "",
-  //   professional_Title: raw.professional_Title || raw["Role"] || "",
-  //   photo: raw.photo || "images/default.jpg",
-  //   organization: raw.organization || raw["Organization / Affiliation"] || "",
-  //   sector: raw.sector || "",
-  //   primary_Role: raw.primary_Role || raw["Primary affiliation"] || "",
-  //   career_Stage: raw.career_Stage || raw["Career stage"] || "",
-  //   country_based: raw.country_based || raw["Country (based)"] || "",
-  //   country_work: raw.country_work || raw["Country (work)"] || "",
-  //   region: raw.region || raw["Region"] || "",
-  //   language: raw.language || raw["Language "] || "",
-  //   health_Threat_Category: raw.health_Threat_Category || raw["Health threats (category)"] || "",
-  //   health_Threat_Pathogen: raw.health_Threat_Pathogen || raw["Health Threat (Pathogen/Threat)"] || "",
-  //   setting: raw.setting || raw["setting of work"] || "",
-  //   expertise: raw.expertise || "",
-  //   laboratory_Methods: raw.laboratory_Methods || raw["Laboratory methods"] || "",
-  //   interest_Areas: raw.interest_Areas || raw["Interest Areas"] || raw["Interests"] || "",
-  //   seeking_Collaborations: raw.seeking_Collaborations || raw["Seeking Collaborations"] || "",
-  //   collaboration_Type: raw.collaboration_Type || raw["Collaboration Type"] || "",
-  //   email: raw.email || "",
-  //   websites: raw.websites || raw["Websites / LinkedIn"] || "",
-  // };
 
   return { 
     name: raw.name || "", 
@@ -64,7 +39,6 @@ function normalizeMember(raw) {
 // ---- Load data from backend ----
 const API_URL = "https://cop-wes-member-directory-backend.onrender.com/members";
 
-// Create a status box
 const statusBox = document.createElement("div");
 statusBox.id = "status-message";
 statusBox.style.margin = "10px 0";
@@ -175,7 +149,7 @@ function displayMembers(list) {
       <div class="modal-content">
         <span class="close" onclick="closeModal('modal${index}')">&times;</span>
         ${Object.entries(member)
-          .filter(([key]) => key.toLowerCase() !== "photo") // 👈 exclude photo
+          .filter(([key]) => key.toLowerCase() !== "photo") 
           .map(([key, val]) => val
             ? `<p><strong>${key.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())}:</strong> ${val}</p>`
             : ""
@@ -188,8 +162,6 @@ function displayMembers(list) {
 }
 
 // ---- Compute + Sort + Render ----
-
-
 function recompute() {
   if (!members || !members.length) {
     showStatus("⚠️ No member data available yet.", true);
@@ -217,11 +189,9 @@ function recompute() {
       .split(/[,;]\s*/)
       .map(s => s.trim());
 
-    // ✅ Region match
     const matchRegion =
       !regions.length || regions.some(r => memberRegion.includes(r));
 
-    // ✅ Pathogen match (handles parastic/parasitic)
     const matchPathogen =
       !pathogens.length ||
       pathogens.some(p =>
@@ -234,7 +204,6 @@ function recompute() {
         })
       );
 
-    // ✅ Setting match (trimmed)
     const matchSetting =
       !settings.length ||
       settings.some(s =>
@@ -257,7 +226,6 @@ function recompute() {
 }
 
 
-// ---- Modal handlers ----
 function openModal(id) {
   document.getElementById(id).style.display = 'flex';
 }
@@ -270,14 +238,14 @@ window.onclick = function (event) {
   });
 };
 
-// ---- Event Listeners ----
+
 document.querySelectorAll(".filter").forEach(cb => cb.addEventListener("change", recompute));
 sortBy.addEventListener("change", recompute);
 searchBtn.addEventListener("click", e => { e.preventDefault(); recompute(); });
 clearSearchBtn.addEventListener("click", e => { e.preventDefault(); searchBar.value = ""; recompute(); });
 searchBar.addEventListener("keypress", e => { if (e.key === "Enter") { e.preventDefault(); recompute(); } });
 
-// ---- Login handler ----
+
 function checkPassword() {
   const password = document.getElementById("password").value;
   const error = document.getElementById("error");
@@ -295,7 +263,6 @@ function checkPassword() {
   }
 }
 
-// ---- Home button ----
 const homeBtn = document.getElementById("homeBtn");
 if (homeBtn) homeBtn.addEventListener("click", () => window.location.href = "home.html");
 
