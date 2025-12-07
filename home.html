@@ -9,13 +9,11 @@
 
 <body>
 
-  <!-- Banner -->
   <div class="banner">
     <img src="images/ipsn_logo_light_small.jpg" alt="Banner" id="bannerImg"/>
       
   </div>
 
-  <!-- Protected content wrapper -->
   <div id="content" style="display:none;"></div>
 
 <header> 
@@ -33,12 +31,9 @@
       </div> 
       <button id="searchBtn">Search</button>
     </div> 
-
-    <!-- <div class="header-bottom-line" aria-hidden="true"></div> -->
     
   </div>
-   <!-- 💡 Suggestions dropdown (added to fix the error) -->
-    <!-- <ul id="suggestions" class="suggestions-list"></ul> -->
+
  </header>
 
 
@@ -52,7 +47,6 @@
       <h3 class="filters-title">Filter by</h3> <span class="reset" onclick="resetFilters()">Reset All</span>
      </div>
 
-       <!-- Sort -->
     <div class="filter-group" id="sortFilterGroup">
       <h4>Sort</h4>
         <select id="sortBy">
@@ -112,44 +106,6 @@
     </footer>
 
 
-    <!-- <script>
-
-    // redirect menu
-
-    function goHome(select) {
-      if (select.value === "home") {
-        window.location.href = "index.html"; 
-      }
-    }
-
-    // check if user is logged in
-    if (localStorage.getItem("authenticated") === "true") {
-    document.getElementById("content").style.display = "block";
-      } else {
-   window.location.href = "index.html";
-    }
-    
-</script>
-
-  </script>
-
-  <script src="script.js"></script>
-
-
-  <script>
-    const version = new Date().getTime();
-    const css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = `style.css?v=${version}`;
-    document.head.appendChild(css);
-
-    const script = document.createElement('script');
-    script.src = `script.js?v=${version}`;
-    document.head.appendChild(script);
-  </script>
-
-
-     -->
 
      <script>
   // Redirect menu
@@ -159,14 +115,14 @@
     }
   }
 
-  // Check if user is logged in
+  // Auth users
   if (localStorage.getItem("authenticated") === "true") {
     document.getElementById("content").style.display = "block";
   } else {
     window.location.href = "index.html";
   }
 
-  // Dynamically load script.js and style.css with cache-busting version
+ 
   const version = new Date().getTime();
 
   const css = document.createElement('link');
@@ -176,7 +132,7 @@
 
   const script = document.createElement('script');
   script.src = `script.js?v=${version}`;
-  document.body.appendChild(script);  // ✅ load at the end, not in <head>
+  document.body.appendChild(script);  
 </script>
 
 

@@ -17,19 +17,16 @@
     <p id="error"></p>
   </div>
 
-  <!-- <script src="script.js"></script> -->
 
   <script>
 function checkPassword() {
   const password = document.getElementById("password").value;
   const error = document.getElementById("error");
-  const correctPassword = "copwes1"; // ✅ your passcode here
+  const correctPassword = "copwes1"; 
 
   if (password === correctPassword) {
-    // Mark as logged in
     localStorage.setItem("authenticated", "true");
 
-    // Redirect to home page
     window.location.href = "home.html";
   } else {
     error.textContent = "❌ Incorrect passcode. Try again.";
